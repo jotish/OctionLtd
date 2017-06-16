@@ -40,6 +40,7 @@ public class ListingActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     initDataBinding();
     setSupportActionBar(mActivityListingBinding.toolbar);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
     BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
     navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     navigation.setSelectedItemId(R.id.navigation_home);

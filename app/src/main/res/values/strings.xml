@@ -1,9 +1,12 @@
 <resources>
   <string name="app_name">Oction Ltd</string>
-  <string name="title_home">Home</string>
-  <string name="title_dashboard">Dashboard</string>
-  <string name="title_notifications">Notifications</string>
+  <string name="title_auction">Auction</string>
+  <string name="title_credits">Credits</string>
+  <string name="title_account">Account</string>
   <string name="current">Current</string>
   <string name="upcoming">Upcoming</string>
   <string name="remaining">remaining</string>
+  <string name="retail_rice">Retail Price %1$s %2$s</string>
+  <string name="currency_format">%1$s %2$s</string>
+  <string name="starts_in">Starts in %1$s</string>
 </resources>

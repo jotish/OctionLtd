@@ -2,17 +2,19 @@ package com.jotish.octionltd.viewmodel;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.CountDownTimer;
-import android.support.v4.content.ContextCompat;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
-import com.jotish.octionltd.BR;
+import com.jotish.octionltd.R;
+import com.jotish.octionltd.data.Auction;
 import com.jotish.octionltd.data.AuctionItemFactory;
 import com.jotish.octionltd.data.AuctionItemResponse;
+import com.jotish.octionltd.utils.DateUtils;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by jotishsuthar on 16/06/17.
@@ -35,7 +37,7 @@ public class AuctionItemViewModel extends BaseObservable{
     }
     return null;
   }
-  @Bindable
+
   public String getTimeRemaining() {
     if (timeRemaining == null) {
       int startTime = Integer.valueOf(mAuctionItem.getAuction().getStart_time_unix());
@@ -45,16 +47,42 @@ public class AuctionItemViewModel extends BaseObservable{
     return this.timeRemaining;
   }
 
+  public String getTimeToStart() {
+    if (timeRemaining == null) {
+      String startTime = mAuctionItem.getAuction().getStart_time();
+      String format = "yyyy-MM-dd HH:mm:ss";
+      SimpleDateFormat formater = new SimpleDateFormat(format);
+      try{
+        Date startDate = formater.parse(startTime);
+        Date currentDate = new Date();
+        timeRemaining = DateUtils.getFormattedDifferenceInDates(currentDate, startDate);
+      } catch(ParseException e){
+        timeRemaining = null;
+      }
+    }
+    return  mContext.getString(R.string.starts_in, timeRemaining);
+  }
+
+
+  public int getProgressTimeRemaining() {
+    Random rand = new Random();
+    return rand.nextInt(100) + 1;
+  }
+
   public String getItemName() {
     return mAuctionItem.getAuction().getTitle();
   }
 
   public String getRetailPrice() {
-    return mAuctionItem.getAuction().getProductPrice();
+    Auction auctionItem = mAuctionItem.getAuction();
+    return mContext.getString(R.string.retail_rice,auctionItem.getCurrency(),
+        auctionItem.getProductPrice());
   }
 
   public String getAuctionPrice() {
-    return mAuctionItem.getAuction().getStartingPrice();
+    Auction auctionItem = mAuctionItem.getAuction();
+    return mContext.getString(R.string.currency_format, auctionItem.getCurrency(),
+        auctionItem.getPrice());
   }
 
   @BindingAdapter({"bind:imageUrl","bind:placeHolderDrawable", "bind:errorDrawable" })

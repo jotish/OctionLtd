@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class AuctionItemResponse {
    private Auction auction;
    private ArrayList<Media> media;
+   private boolean isUpComing;
 
    public Auction getAuction() {
       return auction;
@@ -16,5 +17,9 @@ public class AuctionItemResponse {
 
    public ArrayList<Media> getMedia() {
       return media;
+   }
+
+   public boolean isUpComing() {
+      return isUpComing;
    }
 }

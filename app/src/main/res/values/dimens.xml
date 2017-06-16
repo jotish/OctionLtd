@@ -5,6 +5,7 @@
 
   <dimen name="padding_medium">12dp</dimen>
   <dimen name="padding_large">22dp</dimen>
-  <dimen name="padding_tiny">4dp</dimen>
+  <dimen name="padding_tiny">6dp</dimen>
+  <dimen name="padding_small">10dp</dimen>
   <dimen name="progress_bar_medium">16dp</dimen>
 </resources>

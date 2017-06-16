@@ -60,7 +60,7 @@ public class ListingsFragment extends Fragment{
         mContext.getSupportFragmentManager());
     adapter.addFragment(ItemsListFragment.newInstance(),
         mListingFragmentViewModel.getCurrentItemsLabel());
-    adapter.addFragment(ItemsListFragment.newInstance(),
+    adapter.addFragment(ItemsUpcomingListFragment.newInstance(),
         mListingFragmentViewModel.getUpcomingItemsLabel());
     pager.setAdapter(adapter);
   }

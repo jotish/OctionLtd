@@ -7,9 +7,13 @@
   <color name="textColorNotSelected">@color/blackLightShade</color>
 
   <color name="whiteShade">#F2F2F2</color>
+  <color name="whiteLightShade">#E7E7E7</color>
   <color name="greenTheme">#2AB97D</color>
   <color name="blackShade">#292929</color>
   <color name="blackLightShade">#BFBFBF</color>
   <color name="whiteBackgroundShade">#FCFCFC</color>
   <color name="greenDark">#2DB571</color>
+  <color name="redDark">#C73435</color>
+
+
 </resources>
