@@ -35,4 +35,6 @@ dependencies {
 
     compile rxDependencies.rxAndroid
     compile rxDependencies.rxJava
+
+    compile glide
 }

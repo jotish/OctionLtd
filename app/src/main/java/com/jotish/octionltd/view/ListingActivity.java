@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -52,10 +53,12 @@ public class ListingActivity extends AppCompatActivity {
   }
 
   private void loadListingFragment() {
-    ListingsFragment listingsFragment = ListingsFragment.newInstance();
-    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-    transaction.replace(R.id.content_fragment, listingsFragment);
-    transaction.addToBackStack(null);
-    transaction.commit();
+    Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.content_fragment);
+    if (currentFragment == null || !(currentFragment instanceof  ListingsFragment)) {
+      ListingsFragment listingsFragment = ListingsFragment.newInstance();
+      FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+      transaction.replace(R.id.content_fragment, listingsFragment, listingsFragment.getTag());
+      transaction.commit();
+    }
   }
 }

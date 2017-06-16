@@ -64,5 +64,4 @@ public class ListingsFragment extends Fragment{
         mListingFragmentViewModel.getUpcomingItemsLabel());
     pager.setAdapter(adapter);
   }
-
 }

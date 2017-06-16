@@ -10,14 +10,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AuctionItemFactory {
 
-  private final static String BASE_URL = "https://dev-us-02.oction.co/api/v1/";
+  private final static String BASE_API_URL = "https://dev-us-02.oction.co/api/v1/";
+  private final static String BASE_URL = "https://dev-us-02.oction.co";
 
   public static AuctionItemRepo create() {
-    Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+    Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_API_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build();
     return retrofit.create(AuctionItemRepo.class);
+  }
+
+  public static String getBaseUrl() {
+    return BASE_URL;
   }
 
 }

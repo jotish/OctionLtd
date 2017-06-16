@@ -9,4 +9,12 @@ import java.util.ArrayList;
 public class AuctionItemResponse {
    private Auction auction;
    private ArrayList<Media> media;
+
+   public Auction getAuction() {
+      return auction;
+   }
+
+   public ArrayList<Media> getMedia() {
+      return media;
+   }
 }

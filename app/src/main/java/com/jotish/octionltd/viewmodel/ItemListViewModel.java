@@ -30,12 +30,13 @@ public class ItemListViewModel extends Observable {
 
   public ItemListViewModel(@NonNull Context context) {
     mContext = context;
+    mAuctionItems = new ArrayList<>();
     listProgress = new ObservableInt(View.GONE);
     itemRecycler = new ObservableInt(View.GONE);
     compositeDisposable = new CompositeDisposable();
   }
 
-  public void init(View view) {
+  public void init() {
     initializeViews();
     getItemList();
   }
@@ -80,5 +81,19 @@ public class ItemListViewModel extends Observable {
     mAuctionItems.addAll(items);
     setChanged();
     notifyObservers();
+  }
+  public void reset() {
+    unSubscribeFromObservable();
+    compositeDisposable = null;
+    mContext = null;
+  }
+  private void unSubscribeFromObservable() {
+    if (compositeDisposable != null && !compositeDisposable.isDisposed()) {
+      compositeDisposable.dispose();
+    }
+  }
+
+  public List<AuctionItemResponse> getAuctionItems() {
+    return mAuctionItems;
   }
 }

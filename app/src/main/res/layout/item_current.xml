@@ -1,0 +1,126 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="auctionItemViewModel"
+      type="com.jotish.octionltd.viewmodel.AuctionItemViewModel"/>
+  </data>
+
+  <android.support.v7.widget.CardView
+    android:id="@+id/itemView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_gravity="center_horizontal"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    app:cardElevation="1dp">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingBottom="@dimen/padding_medium"
+      android:orientation="vertical">
+
+      <ImageView
+        android:id="@+id/image_item"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        tools:errorDrawable="@{@drawable/network_failure}"
+        tools:imageUrl="@{auctionItemViewModel.mediaImageUrl}"
+        tools:placeHolderDrawable="@{@drawable/image_placeholder}"/>
+
+      <ProgressBar
+        android:id="@+id/progress_bidding"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/progress_bar_medium"
+        android:indeterminate="false"/>
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_medium"
+        android:layout_marginTop="@dimen/padding_tiny"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+          android:id="@+id/time_remaining"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          style="@style/Text.Small.Bold"
+          android:text="@{auctionItemViewModel.timeRemaining}"
+          android:textColor="@android:color/holo_red_dark"
+          tools:text="120.01s"/>
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/padding_tiny"
+          android:text="@string/remaining"
+          style="@style/Text.Tiny"
+          android:textColor="@color/blackLightShade"/>
+
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_tiny"
+        android:paddingLeft="@dimen/padding_medium"
+        android:orientation="vertical">
+
+        <TextView
+          android:id="@+id/item_name"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@{auctionItemViewModel.itemName}"
+          style="@style/Text.Medium"
+          android:textColor="@color/textColorPrimary"
+          tools:text="IPHONE"/>
+
+        <TextView
+          android:id="@+id/retailPrice"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/padding_tiny"
+          android:text="@{auctionItemViewModel.retailPrice}"
+          style="@style/Text.Small"
+          tools:text="Retail price 123 HKD"/>
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/padding_tiny"
+          android:gravity="center_horizontal">
+
+          <TextView
+            android:id="@+id/auctionPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{auctionItemViewModel.auctionPrice}"
+            style="@style/Text.Large.Bold"
+            android:textColor="@color/greenDark"
+            tools:text="HKD 123"/>
+
+          <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/padding_medium"
+            app:srcCompat="@drawable/ic_chevron_right_black_24dp"/>
+
+        </RelativeLayout>
+      </LinearLayout>
+    </LinearLayout>
+
+  </android.support.v7.widget.CardView>
+
+</layout>
